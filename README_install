@@ -9,14 +9,20 @@ npx create-react-app hello
 cd hello
 npx hardhat
 
-
+# double check dns
 vi hardhat.config.js
+
+vi contracts/Hello.sol
+
 # double check dns
 vi src/App.js
-# double check dns
+
 vi scripts/deploy.js
 
 
-npx hardhat node --hostname ec2-35-86-73-162.us-west-2.compute.amazonaws.com
-npx   hardhat run scripts/deploy.js --network localhost
 
+
+/home/ubuntu/hello   npx hardhat node --hostname ec2-35-86-73-162.us-west-2.compute.amazonaws.com
+/home/ubuntu/hello npx   hardhat run scripts/deploy.js --network localhost
+
+/home/ubuntu/hello npm start   
