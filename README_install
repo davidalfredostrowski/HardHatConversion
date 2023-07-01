@@ -12,6 +12,8 @@ npx hardhat
 
 vi hardhat.config.js
 # double check dns
+vi src/App.js
+# double check dns
 vi 
 
 
