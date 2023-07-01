@@ -4,41 +4,38 @@ import HelloAbi from './contractsData/Hello.json'
 import HelloAddress from './contractsData/Hello-address.json'
 
 class App extends Component {
-        componentWillMount(){
-                this.loadBlockchainData()
-        }
-
-  async loadBlockchainData(){
-
-       console.log('HelloAddress.address', HelloAddress.address)
-       console.log('HelloAbi.abi', HelloAbi.abi)
-       let NewHelloAbi = require('./contractsData/Hello.json');
-       const web3 = new Web3(new Web3.providers.HttpProvider("http://ec2-44-234-72-120.us-west-2.compute.amazonaws.com:8545"))
-       var account;
-       const accounts  = await web3.eth.getAccounts()
-       console.log(accounts)
-       web3.eth.getAccounts().then((f) => {
-         account = f[0];
-       })
-
-       this.setState( { account : accounts[0] })
-       console.log(account);
-       const contract = new web3.eth.Contract(NewHelloAbi.abi);
-       contract.options.address = HelloAddress.address
-       this.setState( { contract })
-
-
-
+    componentWillMount(){
+        this.loadBlockchainData()
     }
 
+async loadBlockchainData(){
+    console.log('HelloAddress.address', HelloAddress.address)
+    console.log('HelloAbi.abi', HelloAbi.abi)
+    let NewHelloAbi = require('./contractsData/Hello.json');
+    const web3 = new Web3(new Web3.providers.HttpProvider("http://ec2-44-234-72-120.us-west-2.compute.amazonaws.com:8545"))
+    var account;
+    const accounts  = await web3.eth.getAccounts()
+    console.log(accounts)
+    web3.eth.getAccounts().then((f) => {
+        account = f[0];
+    })
+
+    this.setState( { account : accounts[0] })
+    console.log(account);
+    const contract = new web3.eth.Contract(NewHelloAbi.abi);
+    contract.options.address = HelloAddress.address
+    this.setState( { contract })
+
+}
+
     constructor(props){
-                super(props)
-                console.log("constructor")
-                this.state = {
-                        account: '',
-                        loading: true,
-                        message: ''
-                }
+        super(props)
+        console.log("constructor")
+        this.state = {
+            account: '',
+            loading: true,
+            message: ''
+        }
      }
 
     setHandler = (event) => {
@@ -59,7 +56,6 @@ render(){
 
         return (
                 <div>
-
                 <h5>message output: {this.state.message}</h5>
                 <h4> {"Get/Set Contract interaction"} </h4>
                         <form onSubmit={this.setHandler}>
