@@ -10,7 +10,9 @@ cd hello
 npx hardhat
 
 
-
+vi hardhat.config.js
+# double check dns
+vi 
 
 
 npx hardhat node --hostname ec2-35-86-73-162.us-west-2.compute.amazonaws.com
